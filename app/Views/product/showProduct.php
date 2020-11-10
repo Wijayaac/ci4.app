@@ -57,7 +57,7 @@
                 success: function(response) {
                     $('.viewModal').html(response.data).show();
 
-                    $('#addModal').modal('show');
+                    $('#modalAdd').modal('show');
 
                 },
                 error: function(xhr, ajaxOptions, thrownError) {
