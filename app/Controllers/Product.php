@@ -175,11 +175,29 @@ class Product extends BaseController
         if ($this->request->isAJAX()) {
             $idProduct = $this->request->getVar('idProduct');
 
-
             $this->product->delete($idProduct);
 
             $message = [
                 'success' => ' Your product had been deleted '
+            ];
+            echo json_encode($message);
+        } else {
+            exit('Bip bop bip bip bop ?');
+        }
+    }
+
+    public function multipleDelete()
+    {
+        if ($this->request->isAJAX()) {
+            $idProduct = $this->request->getVar('idProduct');
+
+            $totalData = count($idProduct);
+
+            for ($i = 0; $i < $totalData; $i++) {
+                $this->product->delete($idProduct[$i]);
+            }
+            $message = [
+                'success' => " Your $totalData product had been deleted "
             ];
             echo json_encode($message);
         } else {
